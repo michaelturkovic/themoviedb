@@ -24,7 +24,7 @@ export const App: FC = (): JSX.Element => {
         {sidebarOpen && (
           <div className='backdrop' onClick={() => setSidebarOpen(false)} />
         )}
-        <Sidebar open={sidebarOpen} />
+        <Sidebar open={sidebarOpen} onItemClick={() => sidebarOpen && setSidebarOpen(false)} />
         <div className='app__main'>
           <Header onMenuBtnClick={() => setSidebarOpen(true)} />
           <div className='app__content'>

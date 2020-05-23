@@ -1,0 +1,24 @@
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    padding: 0 10px;
+    background-color: $white;
+}
+
+.menu__button {
+    width: 30px;
+    height: 30px;
+    color: $dark-blue;
+    font-size: 25px;
+    background-color: transparent;
+    display: none;
+
+    @include md {
+        display: block;
+    }
+}

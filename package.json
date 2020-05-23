@@ -1,0 +1,30 @@
+{
+  "name": "moviedb-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "build": "npx webpack --env.NODE_ENV=production",
+    "start": "npx webpack-dev-server --hot --open --env.NODE_ENV=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Turković",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "ts-loader": "^7.0.4",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -3,6 +3,9 @@
 
 @import 'layout/app_layout';
 @import 'layout/sidebar';
+@import 'layout/movies';
 
 @import 'module/header';
 @import 'module/button';
+@import 'module/movie_item';
+@import 'module/loading';

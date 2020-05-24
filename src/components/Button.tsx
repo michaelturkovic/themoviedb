@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 type ButtonProps = {
   label?: string;
   classname: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const Button: FC<ButtonProps> = ({

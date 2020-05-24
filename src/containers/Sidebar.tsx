@@ -21,8 +21,8 @@ export const Sidebar: FC<SidebarProps> = ({
         />
         <NavItem path='/movies/popular' label='Popular' onClick={onItemClick} />
         <NavItem
-          path='/movies/upcoming'
-          label='Upcoming'
+          path='/movies/top-rated'
+          label='Top Rated'
           onClick={onItemClick}
         />
       </div>

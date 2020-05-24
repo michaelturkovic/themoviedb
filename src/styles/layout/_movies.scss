@@ -1,0 +1,33 @@
+.movies__wrapper {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-top: 15px;
+}
+
+.movies__content {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-evenly;
+    grid-gap: 35px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.movies__loading-btn {
+    width: 120px;
+    height: 40px;
+    background-color: $dark-blue;
+    border-radius: 12px;
+    font-size: 14px;
+    color: $white;
+
+    &:hover {
+        background-color: $grey;
+    }
+}

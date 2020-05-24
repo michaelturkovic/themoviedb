@@ -3,6 +3,7 @@ export interface MoviesState {
   movies: IMovie[];
   errorMessage: string | null;
   movieDetails: IMovieDetails | null;
+  ratedMovies: IMovie[]
 }
 
 export interface IMovie {

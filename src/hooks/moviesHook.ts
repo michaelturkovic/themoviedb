@@ -6,13 +6,15 @@ import {
   getMovies as getMoviesAction,
   clearMovies as clearMoviesAction,
   getMovieDetails as getMovieDetailsAction,
-  clearMovieDetails as clearMovieDetailsAction
+  clearMovieDetails as clearMovieDetailsAction,
+  rateMovie as rateMovieAction,
+  getRatedMovies as getRatedMoviesAction,
 } from 'src/actions';
 
 export const useMoviesStore = () => {
   const dispatch = useDispatch();
 
-  const { loading, movies, errorMessage, movieDetails } = useSelector<
+  const { loading, movies, errorMessage, movieDetails, ratedMovies } = useSelector<
     ApplicationState,
     MoviesState
   >((state: ApplicationState) => ({
@@ -20,6 +22,7 @@ export const useMoviesStore = () => {
     movies: state.movies.movies,
     errorMessage: state.movies.errorMessage,
     movieDetails: state.movies.movieDetails,
+    ratedMovies: state.movies.ratedMovies
   }));
 
   const getMovies = useCallback(
@@ -31,14 +34,26 @@ export const useMoviesStore = () => {
     dispatch,
   ]);
 
-  const getMovieDetails  = useCallback(
+  const getMovieDetails = useCallback(
     (id: number) => dispatch(getMovieDetailsAction(id)),
     [dispatch]
   );
 
-  const clearMovieDetails = useCallback(() => dispatch(clearMovieDetailsAction()), [
-    dispatch,
-  ]);
+  const clearMovieDetails = useCallback(
+    () => dispatch(clearMovieDetailsAction()),
+    [dispatch]
+  );
+
+  const rateMovie = useCallback(
+    (movieId: number, value: number, sessionId: string) =>
+      dispatch(rateMovieAction(movieId, value, sessionId)),
+    [dispatch]
+  );
+
+  const getRatedMovies = useCallback(
+    (sessionId: string) => dispatch(getRatedMoviesAction(sessionId)),
+    [dispatch]
+  );
 
   return {
     loading,
@@ -48,6 +63,8 @@ export const useMoviesStore = () => {
     getMovies,
     clearMovies,
     getMovieDetails,
-    clearMovieDetails
+    clearMovieDetails,
+    rateMovie,
+    getRatedMovies,
   };
 };

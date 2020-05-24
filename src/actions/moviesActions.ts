@@ -66,3 +66,53 @@ export const getMovieDetails = (id: number): Action => async (
 export const clearMovieDetails = (): MoviesAction => {
   return { type: MoviesActionTypes.CLEAR_MOVIE_DETAILS };
 };
+
+export const rateMovie = (
+  movieId: number,
+  value: number,
+  sessionId: string
+): Action => async (dispatch: Dispatch<MoviesAction>) => {
+  try {
+    let data = {
+      value,
+    };
+    let response = await axios.post(
+      `${API_URL}/movie/${movieId}/rating`,
+      data,
+      {
+        params: {
+          api_key: process.env.API_KEY,
+          guest_session_id: sessionId,
+        },
+      }
+    );
+    if (response.data.status_code === 1) {
+      dispatch(getRatedMovies(sessionId));
+    }
+  } catch (error) {
+    dispatch(setErrorMessage(error.message));
+  } finally {
+  }
+};
+
+export const getRatedMovies = (sessionId: string): any => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    let response = await axios.get(
+      `${API_URL}/guest_session/${sessionId}/rated/movies`,
+      {
+        params: {
+          api_key: process.env.API_KEY,
+        },
+      }
+    );
+
+    dispatch({
+      type: MoviesActionTypes.GET_RATED_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

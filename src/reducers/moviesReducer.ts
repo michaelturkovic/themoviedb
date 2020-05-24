@@ -6,6 +6,7 @@ const initialState: MoviesState = {
   movies: [],
   errorMessage: null,
   movieDetails: null,
+  ratedMovies: [],
 };
 
 export const moviesReducer = (
@@ -34,15 +35,26 @@ export const moviesReducer = (
         movies: [],
       };
     case MoviesActionTypes.GET_MOVIE_DETAILS:
+      let movie = state.ratedMovies.find((el) => el.id === action.payload?.id);
+      let movieDetails =
+        movie !== undefined
+          ? {...movie, ...action.payload}
+          : action.payload;
+
       return {
         ...state,
-        movieDetails: action.payload,
+        movieDetails: movieDetails,
       };
     case MoviesActionTypes.CLEAR_MOVIE_DETAILS:
       return {
         ...state,
-        movieDetails: null
-      }
+        movieDetails: null,
+      };
+    case MoviesActionTypes.GET_RATED_MOVIES:
+      return {
+        ...state,
+        ratedMovies: action.payload,
+      };
     default:
       return state;
   }

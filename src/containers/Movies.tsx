@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useMoviesStore } from 'src/hooks';
+import { useMoviesStore, useAppStore } from 'src/hooks';
 import { useParams } from 'react-router-dom';
 import { MovieItem, Loading, Button } from 'src/components';
 
@@ -15,7 +15,9 @@ export const Movies: FC = (): JSX.Element => {
     errorMessage,
     getMovies,
     clearMovies,
+    getRatedMovies
   } = useMoviesStore();
+  const { guestSessionId } = useAppStore();
   const { name } = useParams<MovieRouteParams>();
   const query = name.replace('-', '_').toLocaleLowerCase();
 
@@ -23,6 +25,9 @@ export const Movies: FC = (): JSX.Element => {
     clearMovies();
     setPage(1);
     getMovies(query, 1);
+
+    if (guestSessionId !== null)
+      getRatedMovies(guestSessionId);
   }, [name]);
 
   useEffect(() => {

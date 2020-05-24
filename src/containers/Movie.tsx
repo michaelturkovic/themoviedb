@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useMoviesStore } from 'src/hooks';
+import { useMoviesStore, useAppStore } from 'src/hooks';
 import { MovieDetails, Loading } from 'src/components';
 
 type MovieRouteParams = {
@@ -9,7 +9,14 @@ type MovieRouteParams = {
 
 export const Movie: FC = (): JSX.Element => {
   const { id } = useParams<MovieRouteParams>();
-  const { loading, movieDetails, getMovieDetails, clearMovieDetails } = useMoviesStore();
+  const {
+    loading,
+    movieDetails,
+    getMovieDetails,
+    clearMovieDetails,
+    rateMovie,
+  } = useMoviesStore();
+  const { guestSessionId } = useAppStore();
 
   useEffect((): any => {
     getMovieDetails(Number(id));
@@ -23,7 +30,10 @@ export const Movie: FC = (): JSX.Element => {
           {movieDetails != null ? (
             <MovieDetails
               movie={movieDetails}
-              rateMovie={(rating) => console.log(rating)}
+              rateMovie={(rating) => {
+                if (guestSessionId !== null)
+                  rateMovie(movieDetails.id, rating, guestSessionId);
+              }}
             />
           ) : null}
         </>

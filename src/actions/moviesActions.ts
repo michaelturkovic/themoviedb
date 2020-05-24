@@ -3,6 +3,8 @@ import { Dispatch } from 'redux';
 import { Action } from 'src/store';
 import { MoviesAction, MoviesActionTypes } from './types';
 import { API_URL } from 'src/contstants';
+import history from 'src/utils/history';
+import { getRandomItem } from 'src/utils';
 
 export const isLoading = (loading: boolean): MoviesAction => {
   return { type: MoviesActionTypes.LOADING, payload: loading };
@@ -91,7 +93,6 @@ export const rateMovie = (
     }
   } catch (error) {
     dispatch(setErrorMessage(error.message));
-  } finally {
   }
 };
 
@@ -112,6 +113,55 @@ export const getRatedMovies = (sessionId: string): any => async (
       type: MoviesActionTypes.GET_RATED_MOVIES,
       payload: response.data.results,
     });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getGenres = (): any => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    let response = await axios.get(`${API_URL}/genre/movie/list`, {
+      params: {
+        api_key: process.env.API_KEY,
+      },
+    });
+
+    dispatch({
+      type: MoviesActionTypes.GET_GENRES,
+      payload: response.data.genres,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getRandomMovie = (genreId: number): Action => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    let responseByGenre = await axios.get(`${API_URL}/discover/movie`, {
+      params: {
+        api_key: process.env.API_KEY,
+        with_genres: genreId,
+      },
+    });
+
+    let totalPages: number = responseByGenre.data.total_pages;
+    let resultsPerPage: number = responseByGenre.data.results.length;
+    let { randomPage, randomItem } = getRandomItem(totalPages, resultsPerPage);
+
+    let response = await axios.get(`${API_URL}/discover/movie`, {
+      params: {
+        api_key: process.env.API_KEY,
+        with_genres: genreId,
+        page: randomPage,
+      },
+    });
+
+    let { id } = response.data.results[randomItem];
+    history.push(`/movie/${id}`);
   } catch (error) {
     console.log(error.message);
   }

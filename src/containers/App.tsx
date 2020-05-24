@@ -5,12 +5,13 @@ import { Header } from 'src/components';
 import { AppRouter } from 'src/AppRouter';
 import history from 'src/utils/history';
 import '../styles/app.scss';
-import { useAppStore } from 'src/hooks/appHooks';
 import { checkSession } from 'src/utils';
+import { useMoviesStore, useAppStore } from 'src/hooks';
 
 export const App: FC = (): JSX.Element => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { getSessionId, setSessionId } = useAppStore();
+  const { getGenres } = useMoviesStore();
 
   useEffect(() => {
     let guestSession: string | null = localStorage.getItem('guestSession');
@@ -21,6 +22,8 @@ export const App: FC = (): JSX.Element => {
       else setSessionId(session.sessionId);
     } else getSessionId();
 
+    getGenres();
+    
     window.addEventListener('resize', updateView);
     return () => window.removeEventListener('resize', updateView);
   }, []);

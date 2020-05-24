@@ -1,0 +1,53 @@
+.movie-roulette__content {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  height: 400px;
+  width: 300px;
+  border-radius: 12px;
+}
+
+.content__header {
+  display: flex;
+  height: 35px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__title {
+  color: $dark-blue;
+}
+
+.content__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px 50px;
+  overflow-y: auto;
+}
+
+.content__footer {
+  display: flex;
+  height: 60px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.roulette_button {
+  width: 120px;
+  height: 35px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  color: $white;
+  background-color: $dark-blue;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: $light-grey;
+    color: $dark-blue;
+  }
+}

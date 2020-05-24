@@ -32,6 +32,11 @@
 .info__poster {
   max-height: 400px;
   width: 300px;
+
+  @include sm {
+    width: 250px;
+   
+  }
 }
 
 .poster__image {
@@ -60,6 +65,10 @@
 
   @include md {
     margin-top: 80px;
+  }
+
+  @include sm {
+    margin-top: 40px;
   }
 }
 

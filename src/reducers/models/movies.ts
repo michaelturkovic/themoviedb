@@ -2,8 +2,9 @@ export interface MoviesState {
   loading: boolean;
   movies: IMovie[];
   errorMessage: string | null;
-  movieDetails: IMovieDetails | null;
-  ratedMovies: IMovie[]
+  movieDetails: IMovieDetails | null;
+  ratedMovies: IMovie[];
+  genres: IGenre[];
 }
 
 export interface IMovie {
@@ -38,4 +39,9 @@ export interface IMovieDetails extends IMovie {
   status: string;
   tagline: string;
   runtime: number;
+}
+
+export interface IGenre {
+  id: number;
+  name: string;
 }

@@ -1,0 +1,17 @@
+.float__button {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: $dark-blue;
+  color: $white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 25px;
+
+  &:hover {
+    opacity: 1;
+    background-color: $grey;
+  }
+}

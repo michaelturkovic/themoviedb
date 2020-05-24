@@ -1,0 +1,11 @@
+.radio {
+  display: block;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.radio__label {
+  margin-left: 10px;
+  color: $dark-blue;
+  font-size: 14px;
+}

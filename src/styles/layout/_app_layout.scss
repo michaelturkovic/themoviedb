@@ -36,8 +36,10 @@ body {
   right: 0;
   bottom: 0;
   flex: 1;
-  align-items: center;
-  justify-content: center;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.scroll-lock {
+  overflow: hidden;
 }

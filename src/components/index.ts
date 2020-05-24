@@ -6,3 +6,7 @@ export * from './Loading';
 export * from './MovieDetails';
 export * from './StarRating';
 export * from './Star';
+export * from './Modal';
+export * from './FloatButton';
+export * from './MovieRoulette';
+export * from './RouletteItem';

@@ -1,4 +1,4 @@
-import { IMovieDetails, IMovie } from 'src/reducers';
+import { IMovieDetails, IMovie, IGenre } from 'src/reducers';
 
 export enum MoviesActionTypes {
   LOADING = 'LOADING',
@@ -7,7 +7,8 @@ export enum MoviesActionTypes {
   CLEAR_MOVIES = 'CLEAR_MOVIES',
   GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS',
   CLEAR_MOVIE_DETAILS = 'CLEAR_MOVIE_DETAILS',
-  GET_RATED_MOVIES = 'GET_RATED_MOVIES'
+  GET_RATED_MOVIES = 'GET_RATED_MOVIES',
+  GET_GENRES = 'GET_GENRES'
 }
 
 export interface IMoviesLoading {
@@ -43,6 +44,11 @@ export interface IGetRatedMovies {
   payload: IMovie[]
 }
 
+export interface IGetGenres {
+  type: MoviesActionTypes.GET_GENRES,
+  payload: IGenre[]
+}
+
 export type MoviesAction =
   | IMoviesLoading
   | IGetMovies
@@ -50,4 +56,5 @@ export type MoviesAction =
   | IMoviesClear
   | IGetMovieDetails
   | IClearMovieDetails
-  | IGetRatedMovies;
+  | IGetRatedMovies
+  | IGetGenres;

@@ -8,6 +8,10 @@
   margin-right: 5px;
   cursor: pointer;
   transition: color 0.3s ease-out;
+
+  @include sm {
+    font-size: 19px;
+  }
 }
 
 .star__empty {

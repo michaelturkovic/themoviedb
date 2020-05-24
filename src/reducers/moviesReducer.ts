@@ -7,6 +7,7 @@ const initialState: MoviesState = {
   errorMessage: null,
   movieDetails: null,
   ratedMovies: [],
+  genres: [],
 };
 
 export const moviesReducer = (
@@ -37,9 +38,7 @@ export const moviesReducer = (
     case MoviesActionTypes.GET_MOVIE_DETAILS:
       let movie = state.ratedMovies.find((el) => el.id === action.payload?.id);
       let movieDetails =
-        movie !== undefined
-          ? {...movie, ...action.payload}
-          : action.payload;
+        movie !== undefined ? { ...movie, ...action.payload } : action.payload;
 
       return {
         ...state,
@@ -54,6 +53,11 @@ export const moviesReducer = (
       return {
         ...state,
         ratedMovies: action.payload,
+      };
+    case MoviesActionTypes.GET_GENRES:
+      return {
+        ...state,
+        genres: action.payload,
       };
     default:
       return state;

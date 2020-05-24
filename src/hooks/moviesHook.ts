@@ -9,20 +9,27 @@ import {
   clearMovieDetails as clearMovieDetailsAction,
   rateMovie as rateMovieAction,
   getRatedMovies as getRatedMoviesAction,
+  getGenres as getGenresAction,
+  getRandomMovie as getRandomMovieAction,
 } from 'src/actions';
 
 export const useMoviesStore = () => {
   const dispatch = useDispatch();
 
-  const { loading, movies, errorMessage, movieDetails, ratedMovies } = useSelector<
-    ApplicationState,
-    MoviesState
-  >((state: ApplicationState) => ({
+  const {
+    loading,
+    movies,
+    errorMessage,
+    movieDetails,
+    ratedMovies,
+    genres,
+  } = useSelector<ApplicationState, MoviesState>((state: ApplicationState) => ({
     loading: state.movies.loading,
     movies: state.movies.movies,
     errorMessage: state.movies.errorMessage,
     movieDetails: state.movies.movieDetails,
-    ratedMovies: state.movies.ratedMovies
+    ratedMovies: state.movies.ratedMovies,
+    genres: state.movies.genres,
   }));
 
   const getMovies = useCallback(
@@ -55,16 +62,26 @@ export const useMoviesStore = () => {
     [dispatch]
   );
 
+  const getGenres = useCallback(() => dispatch(getGenresAction()), [dispatch]);
+
+  const getRandomMovie = useCallback(
+    (genreId: number) => dispatch(getRandomMovieAction(genreId)),
+    [dispatch]
+  );
+
   return {
     loading,
     movies,
     errorMessage,
     movieDetails,
+    genres,
     getMovies,
     clearMovies,
     getMovieDetails,
     clearMovieDetails,
     rateMovie,
     getRatedMovies,
+    getGenres,
+    getRandomMovie
   };
 };

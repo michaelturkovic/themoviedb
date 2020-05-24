@@ -1,12 +1,15 @@
-export const getYear = (date: string): number => {
+export const getYear = (date: string): string => {
+  let year = '';
+  if (date !== '') {
     let newDate = new Date(date);
-    return newDate.getFullYear();
-  };
+    year = newDate.getFullYear().toString();
+  }
+  return year;
+};
 
-  export const convertTime = (time: number): string => {
-    let hours = Math.floor(time / 60);
-    let minutes = time % 60;
-    let convertedTime = `${hours} hours ${minutes} minutes`;
-    return convertedTime;
-  };
-  
+export const convertTime = (time: number): string => {
+  let hours = Math.floor(time / 60);
+  let minutes = time % 60;
+  let convertedTime = `${hours} hours ${minutes} minutes`;
+  return convertedTime;
+};

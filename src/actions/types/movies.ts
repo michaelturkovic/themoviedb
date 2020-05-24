@@ -1,8 +1,12 @@
+import { IMovieDetails } from 'src/reducers';
+
 export enum MoviesActionTypes {
   LOADING = 'LOADING',
   GET_MOVIES = 'GET_MOVIES',
   ERROR = 'ERROR',
   CLEAR_MOVIES = 'CLEAR_MOVIES',
+  GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS',
+  CLEAR_MOVIE_DETAILS = 'CLEAR_MOVIE_DETAILS'
 }
 
 export interface IMoviesLoading {
@@ -24,8 +28,19 @@ export interface IMoviesClear {
   type: MoviesActionTypes.CLEAR_MOVIES;
 }
 
+export interface IGetMovieDetails {
+  type: MoviesActionTypes.GET_MOVIE_DETAILS;
+  payload: IMovieDetails;
+}
+
+export interface IClearMovieDetails {
+  type: MoviesActionTypes.CLEAR_MOVIE_DETAILS
+}
+
 export type MoviesAction =
   | IMoviesLoading
   | IGetMovies
   | IMoviesError
-  | IMoviesClear;
+  | IMoviesClear
+  | IGetMovieDetails
+  | IClearMovieDetails;

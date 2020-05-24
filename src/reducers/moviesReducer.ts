@@ -5,6 +5,7 @@ const initialState: MoviesState = {
   loading: false,
   movies: [],
   errorMessage: null,
+  movieDetails: null,
 };
 
 export const moviesReducer = (
@@ -30,7 +31,17 @@ export const moviesReducer = (
     case MoviesActionTypes.CLEAR_MOVIES:
       return {
         ...state,
-        movies: []
+        movies: [],
+      };
+    case MoviesActionTypes.GET_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: action.payload,
+      };
+    case MoviesActionTypes.CLEAR_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: null
       }
     default:
       return state;

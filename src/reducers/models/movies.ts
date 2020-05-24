@@ -2,6 +2,7 @@ export interface MoviesState {
   loading: boolean;
   movies: IMovie[];
   errorMessage: string | null;
+  movieDetails: IMovieDetails | null;
 }
 
 export interface IMovie {
@@ -17,4 +18,23 @@ export interface IMovie {
   release_date: string;
   original_language: string;
   rating: number | null;
+}
+
+export interface IMovieDetails extends IMovie {
+  adult: boolean;
+  budget: number;
+  genres: { id: number; name: string }[];
+  homepage: string;
+  imdb_id: string;
+  production_companies: {
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+  }[];
+  revenue: number;
+  spoken_languages: { iso_639_1: string; name: string }[];
+  status: string;
+  tagline: string;
+  runtime: number;
 }

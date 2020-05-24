@@ -1,0 +1,19 @@
+.rating__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.star {
+  font-size: 22px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+
+.star__empty {
+  color: $light-grey;
+}
+
+.star__filled {
+  color: $dark-blue;
+}

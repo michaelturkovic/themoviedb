@@ -39,3 +39,30 @@ export const getMovies = (query: string, page: number): Action => async (
     dispatch(isLoading(false));
   }
 };
+
+export const getMovieDetails = (id: number): Action => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    dispatch(isLoading(true));
+
+    let response = await axios.get(`${API_URL}/movie/${id}`, {
+      params: {
+        api_key: process.env.API_KEY,
+      },
+    });
+
+    dispatch({
+      type: MoviesActionTypes.GET_MOVIE_DETAILS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch(setErrorMessage(error.message));
+  } finally {
+    dispatch(isLoading(false));
+  }
+};
+
+export const clearMovieDetails = (): MoviesAction => {
+  return { type: MoviesActionTypes.CLEAR_MOVIE_DETAILS };
+};

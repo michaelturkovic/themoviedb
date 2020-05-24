@@ -11,17 +11,25 @@
   "author": "Michael Turković",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
+    "@types/redux": "^3.6.0",
     "css-loader": "^3.5.3",
+    "dotenv-webpack": "^1.8.0",
     "html-webpack-plugin": "^4.3.0",
     "node-sass": "^4.14.1",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.4",

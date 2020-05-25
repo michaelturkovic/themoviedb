@@ -5,6 +5,8 @@
 @import 'layout/sidebar';
 @import 'layout/movies';
 @import 'layout/movie';
+@import 'layout/search';
+@import 'layout/notfound';
 
 @import 'module/header';
 @import 'module/button';
@@ -16,3 +18,4 @@
 @import 'module/modal';
 @import 'module/movie_roulette';
 @import 'module/roulette_item';
+@import 'module/searchbar';

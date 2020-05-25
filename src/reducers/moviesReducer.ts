@@ -8,6 +8,7 @@ const initialState: MoviesState = {
   movieDetails: null,
   ratedMovies: [],
   genres: [],
+  searchResults: [],
 };
 
 export const moviesReducer = (
@@ -58,6 +59,16 @@ export const moviesReducer = (
       return {
         ...state,
         genres: action.payload,
+      };
+    case MoviesActionTypes.GET_SEARCH_MOVIES:
+      return {
+        ...state,
+        searchResults: action.payload,
+      };
+    case MoviesActionTypes.CLEAR_SEARCH_RESULTS:
+      return {
+        ...state,
+        searchResults: [],
       };
     default:
       return state;

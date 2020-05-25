@@ -10,6 +10,7 @@ import { useMoviesStore, useAppStore } from 'src/hooks';
 
 export const App: FC = (): JSX.Element => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const { getSessionId, setSessionId } = useAppStore();
   const { getGenres } = useMoviesStore();
 
@@ -23,13 +24,23 @@ export const App: FC = (): JSX.Element => {
     } else getSessionId();
 
     getGenres();
-    
+
     window.addEventListener('resize', updateView);
     return () => window.removeEventListener('resize', updateView);
   }, []);
 
   const updateView = () => {
     if (window.innerWidth >= 576) setSidebarOpen(false);
+  };
+
+  const onSeachChangeText = (e: React.FormEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value);
+  };
+
+  const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    history.push(`/search?movie=${searchValue}`);
+    //setSearchValue('');
   };
 
   return (
@@ -43,7 +54,12 @@ export const App: FC = (): JSX.Element => {
           onItemClick={() => sidebarOpen && setSidebarOpen(false)}
         />
         <div className='app__main'>
-          <Header onMenuBtnClick={() => setSidebarOpen(true)} />
+          <Header
+            onMenuBtnClick={() => setSidebarOpen(true)}
+            searchValue={searchValue}
+            onCangeText={onSeachChangeText}
+            onSearchSubmit={onSearch}
+          />
           <div className='app__content'>
             <AppRouter />
           </div>

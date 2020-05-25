@@ -8,7 +8,9 @@ export enum MoviesActionTypes {
   GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS',
   CLEAR_MOVIE_DETAILS = 'CLEAR_MOVIE_DETAILS',
   GET_RATED_MOVIES = 'GET_RATED_MOVIES',
-  GET_GENRES = 'GET_GENRES'
+  GET_GENRES = 'GET_GENRES',
+  GET_SEARCH_MOVIES = 'GET_SEARCH_MOVIES',
+  CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS'
 }
 
 export interface IMoviesLoading {
@@ -36,17 +38,26 @@ export interface IGetMovieDetails {
 }
 
 export interface IClearMovieDetails {
-  type: MoviesActionTypes.CLEAR_MOVIE_DETAILS
+  type: MoviesActionTypes.CLEAR_MOVIE_DETAILS;
 }
 
 export interface IGetRatedMovies {
-  type: MoviesActionTypes.GET_RATED_MOVIES,
-  payload: IMovie[]
+  type: MoviesActionTypes.GET_RATED_MOVIES;
+  payload: IMovie[];
 }
 
 export interface IGetGenres {
-  type: MoviesActionTypes.GET_GENRES,
-  payload: IGenre[]
+  type: MoviesActionTypes.GET_GENRES;
+  payload: IGenre[];
+}
+
+export interface IGetSearchMovies {
+  type: MoviesActionTypes.GET_SEARCH_MOVIES;
+  payload: IMovie[];
+}
+
+export interface IClearSearchResults {
+  type: MoviesActionTypes.CLEAR_SEARCH_RESULTS
 }
 
 export type MoviesAction =
@@ -57,4 +68,6 @@ export type MoviesAction =
   | IGetMovieDetails
   | IClearMovieDetails
   | IGetRatedMovies
-  | IGetGenres;
+  | IGetGenres
+  | IGetSearchMovies
+  | IClearSearchResults;

@@ -166,3 +166,32 @@ export const getRandomMovie = (genreId: number): Action => async (
     console.log(error.message);
   }
 };
+
+export const searchMovies = (query: string): Action => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    dispatch(clearSearchResults());
+    dispatch(isLoading(true));
+
+    let response = await axios.get(`${API_URL}/search/movie`, {
+      params: {
+        api_key: process.env.API_KEY,
+        query,
+      },
+    });
+
+    dispatch({
+      type: MoviesActionTypes.GET_SEARCH_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    dispatch(isLoading(false));
+  }
+};
+
+export const clearSearchResults = (): MoviesAction => {
+  return { type: MoviesActionTypes.CLEAR_SEARCH_RESULTS };
+};

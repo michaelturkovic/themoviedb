@@ -1,0 +1,33 @@
+.searchbar__form {
+  display: flex;
+  height: 35px;
+  border: 1px solid $light-grey;
+  border-radius: 12px;
+  padding: 2px 5px;
+  background-color: $white;
+  width: 230px;
+
+  @include md {
+    width: 160px;
+  }
+}
+
+.searchbar {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: $dark-blue;
+  background-color: $white;
+  padding: 0 5px;
+}
+
+.searchbar__btn {
+  height: 100%;
+  width: 20px;
+  border: none;
+  outline: none;
+  color: $dark-blue;
+  background-color: $white;
+  font-size: 25px;
+  cursor: pointer;
+}

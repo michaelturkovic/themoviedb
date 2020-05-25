@@ -5,6 +5,7 @@ export interface MoviesState {
   movieDetails: IMovieDetails | null;
   ratedMovies: IMovie[];
   genres: IGenre[];
+  searchResults: IMovie[];
 }
 
 export interface IMovie {

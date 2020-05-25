@@ -10,3 +10,4 @@ export * from './Modal';
 export * from './FloatButton';
 export * from './MovieRoulette';
 export * from './RouletteItem';
+export * from './SearchBar';

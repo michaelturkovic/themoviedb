@@ -7,13 +7,14 @@
   transition: 0.2s;
   cursor: pointer;
   position: relative;
+  max-width: 250px;
 
   &:hover {
     transform: scale(1.01);
   }
 
   @include sm {
-    width: 230px;
+    width: 210px;
     margin: auto;
   }
 }

@@ -6,6 +6,7 @@ export interface MoviesState {
   ratedMovies: IMovie[];
   genres: IGenre[];
   searchResults: IMovie[];
+  trendingMovies: IMovie[]
 }
 
 export interface IMovie {

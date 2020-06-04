@@ -10,7 +10,9 @@ export enum MoviesActionTypes {
   GET_RATED_MOVIES = 'GET_RATED_MOVIES',
   GET_GENRES = 'GET_GENRES',
   GET_SEARCH_MOVIES = 'GET_SEARCH_MOVIES',
-  CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS'
+  CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS',
+  GET_TRENDING_MOVIES = 'GET_TRENDING_MOVIES',
+  CLEAR_TRENDING_MOVIES = 'CLEAR_TRENDING_MOVIES'
 }
 
 export interface IMoviesLoading {
@@ -60,6 +62,15 @@ export interface IClearSearchResults {
   type: MoviesActionTypes.CLEAR_SEARCH_RESULTS
 }
 
+export interface IGetTrendingMovies {
+  type: MoviesActionTypes.GET_TRENDING_MOVIES,
+  payload: IMovie[]
+}
+
+export interface IClearTrendingMovies {
+  type: MoviesActionTypes.CLEAR_TRENDING_MOVIES
+}
+
 export type MoviesAction =
   | IMoviesLoading
   | IGetMovies
@@ -70,4 +81,6 @@ export type MoviesAction =
   | IGetRatedMovies
   | IGetGenres
   | IGetSearchMovies
-  | IClearSearchResults;
+  | IClearSearchResults
+  | IGetTrendingMovies
+  | IClearTrendingMovies;

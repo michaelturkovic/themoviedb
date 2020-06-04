@@ -13,6 +13,8 @@ import {
   getRandomMovie as getRandomMovieAction,
   searchMovies as searchMoviesAction,
   clearSearchResults as clearSearchResultsAction,
+  getTrendingMovies as getTrendingMoviesAction,
+  clearTrendingMovies as clearTrendingMoviesAction,
 } from 'src/actions';
 
 export const useMoviesStore = () => {
@@ -26,6 +28,7 @@ export const useMoviesStore = () => {
     ratedMovies,
     genres,
     searchResults,
+    trendingMovies,
   } = useSelector<ApplicationState, MoviesState>((state: ApplicationState) => ({
     loading: state.movies.loading,
     movies: state.movies.movies,
@@ -34,6 +37,7 @@ export const useMoviesStore = () => {
     ratedMovies: state.movies.ratedMovies,
     genres: state.movies.genres,
     searchResults: state.movies.searchResults,
+    trendingMovies: state.movies.trendingMovies,
   }));
 
   const getMovies = useCallback(
@@ -83,6 +87,16 @@ export const useMoviesStore = () => {
     [dispatch]
   );
 
+  const getTrendingMovies = useCallback(
+    (timeWindow: string) => dispatch(getTrendingMoviesAction(timeWindow)),
+    [dispatch]
+  );
+
+  const clearTrendingMovies = useCallback(
+    () => dispatch(clearTrendingMoviesAction()),
+    [dispatch]
+  );
+
   return {
     loading,
     movies,
@@ -90,6 +104,7 @@ export const useMoviesStore = () => {
     movieDetails,
     genres,
     searchResults,
+    trendingMovies,
     getMovies,
     clearMovies,
     getMovieDetails,
@@ -100,5 +115,7 @@ export const useMoviesStore = () => {
     getRandomMovie,
     searchMovies,
     clearSearchResults,
+    getTrendingMovies,
+    clearTrendingMovies,
   };
 };

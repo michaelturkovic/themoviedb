@@ -9,6 +9,7 @@ const initialState: MoviesState = {
   ratedMovies: [],
   genres: [],
   searchResults: [],
+  trendingMovies: [],
 };
 
 export const moviesReducer = (
@@ -69,6 +70,16 @@ export const moviesReducer = (
       return {
         ...state,
         searchResults: [],
+      };
+    case MoviesActionTypes.GET_TRENDING_MOVIES:
+      return {
+        ...state,
+        trendingMovies: action.payload,
+      };
+    case MoviesActionTypes.CLEAR_TRENDING_MOVIES:
+      return {
+        ...state,
+        trendingMovies: [],
       };
     default:
       return state;

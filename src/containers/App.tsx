@@ -39,8 +39,9 @@ export const App: FC = (): JSX.Element => {
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    history.push(`/search?movie=${searchValue}`);
-    //setSearchValue('');
+    if (searchValue !== '')
+      history.push(`/search?movie=${searchValue}`);
+      setSearchValue('');
   };
 
   return (

@@ -195,3 +195,30 @@ export const searchMovies = (query: string): Action => async (
 export const clearSearchResults = (): MoviesAction => {
   return { type: MoviesActionTypes.CLEAR_SEARCH_RESULTS };
 };
+
+export const getTrendingMovies = (timeWindow: string): Action => async (
+  dispatch: Dispatch<MoviesAction>
+) => {
+  try {
+    dispatch(isLoading(true));
+
+    let response = await axios.get(`${API_URL}/trending/movie/${timeWindow}`, {
+      params: {
+        api_key: process.env.API_KEY,
+      },
+    });
+
+    dispatch({
+      type: MoviesActionTypes.GET_TRENDING_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(setErrorMessage(error.message));
+  } finally {
+    dispatch(isLoading(false));
+  }
+};
+
+export const clearTrendingMovies = (): MoviesAction => {
+  return { type: MoviesActionTypes.CLEAR_TRENDING_MOVIES };
+};

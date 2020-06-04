@@ -13,8 +13,9 @@ export const Search: FC = (): JSX.Element => {
     clearSearchResults,
   } = useMoviesStore();
 
+  const { movie } = queryString.parse(search);
+
   useEffect((): any => {
-    const { movie } = queryString.parse(search);
     if (movie && typeof movie === 'string') {
       searchMovies(movie);
     }
@@ -25,11 +26,14 @@ export const Search: FC = (): JSX.Element => {
   return (
     <div className='search__wrapper'>
       {!loading ? (
-        <div className='search__container'>
-          {searchResults.map((movie, index) => (
-            <MovieItem key={index} movie={movie} />
-          ))}
-        </div>
+        <>
+          <h4 className='search__header'>SEARCH TERM: {movie}</h4>
+          <div className='search__container'>
+            {searchResults.map((movie, index) => (
+              <MovieItem key={index} movie={movie} />
+            ))}
+          </div>
+        </>
       ) : (
         <Loading />
       )}

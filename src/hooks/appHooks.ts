@@ -10,11 +10,14 @@ import {
 export const useAppStore = () => {
   const dispatch = useDispatch();
 
-  const { guestSessionId } = useSelector<ApplicationState, AppState>(
-    (state: ApplicationState) => ({
-      guestSessionId: state.app.guestSessionId,
-    })
-  );
+  const { routes, guestSessionId, errorMessage } = useSelector<
+    ApplicationState,
+    AppState
+  >((state: ApplicationState) => ({
+    routes: state.app.routes,
+    guestSessionId: state.app.guestSessionId,
+    errorMessage: state.app.errorMessage,
+  }));
 
   const getSessionId = useCallback(() => dispatch(getSessionIdAction()), [
     dispatch,
@@ -26,8 +29,10 @@ export const useAppStore = () => {
   );
 
   return {
+    routes,
     guestSessionId,
+    errorMessage,
     getSessionId,
-    setSessionId
+    setSessionId,
   };
 };

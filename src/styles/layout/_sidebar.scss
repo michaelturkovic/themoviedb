@@ -50,3 +50,24 @@
     margin-left: 10px;
   }
 }
+
+.credits__container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 20px;
+  margin: auto;
+  align-items: center;
+}
+
+.credits__container p {
+  color: $white;
+  font-size: 10.5px;
+  margin-bottom: 8px;
+}
+
+.credits__logo {
+  object-fit: contain;
+  width: 150px;
+  height: 100%;
+}

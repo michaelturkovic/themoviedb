@@ -3,7 +3,7 @@ import { IMovieDetails, IMovie, IGenre } from 'src/reducers';
 export enum MoviesActionTypes {
   LOADING = 'LOADING',
   GET_MOVIES = 'GET_MOVIES',
-  ERROR = 'ERROR',
+  MOVIES_ERROR = 'MOVIES_ERROR',
   CLEAR_MOVIES = 'CLEAR_MOVIES',
   GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS',
   CLEAR_MOVIE_DETAILS = 'CLEAR_MOVIE_DETAILS',
@@ -26,7 +26,7 @@ export interface IGetMovies {
 }
 
 export interface IMoviesError {
-  type: MoviesActionTypes.ERROR;
+  type: MoviesActionTypes.MOVIES_ERROR;
   payload: string;
 }
 

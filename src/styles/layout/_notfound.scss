@@ -1,10 +1,17 @@
 .notfound__container {
   display: flex;
   flex: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.notfound__title {
-    color: $dark-blue;
+.notfound__container h1 {
+  font-size: 80px;
+  color: $dark-blue;
+}
+
+.notfound__container h4 {
+  font-size: 30px;
+  color: $dark-blue;
 }

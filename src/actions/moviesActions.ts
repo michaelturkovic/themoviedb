@@ -11,7 +11,7 @@ export const isLoading = (loading: boolean): MoviesAction => {
 };
 
 export const setErrorMessage = (message: string): MoviesAction => {
-  return { type: MoviesActionTypes.ERROR, payload: message };
+  return { type: MoviesActionTypes.MOVIES_ERROR, payload: message };
 };
 
 export const clearMovies = (): MoviesAction => {
@@ -114,7 +114,7 @@ export const getRatedMovies = (sessionId: string): any => async (
       payload: response.data.results,
     });
   } catch (error) {
-    console.log(error.message);
+    dispatch(setErrorMessage(error.message));
   }
 };
 
@@ -133,7 +133,7 @@ export const getGenres = (): any => async (
       payload: response.data.genres,
     });
   } catch (error) {
-    console.log(error.message);
+    dispatch(setErrorMessage(error.message));
   }
 };
 
@@ -163,7 +163,7 @@ export const getRandomMovie = (genreId: number): Action => async (
     let { id } = response.data.results[randomItem];
     history.push(`/movie/${id}`);
   } catch (error) {
-    console.log(error.message);
+    dispatch(setErrorMessage(error.message));
   }
 };
 
@@ -186,7 +186,7 @@ export const searchMovies = (query: string): Action => async (
       payload: response.data.results,
     });
   } catch (error) {
-    console.log(error.message);
+    dispatch(setErrorMessage(error.message));
   } finally {
     dispatch(isLoading(false));
   }

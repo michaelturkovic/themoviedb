@@ -9,8 +9,7 @@ module.exports = (env) => {
     entry: path.join(__dirname, 'src', 'index.tsx'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
-      publicPath: env.NODE_ENV === 'development' ? '/' : '/dist',
+      filename: 'bundle.js'
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
@@ -25,10 +24,18 @@ module.exports = (env) => {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     },
     devServer: {
-      historyApiFallback: true,
+      historyApiFallback: true
     },
     plugins: [
       new HtmlWebpackPlugin({

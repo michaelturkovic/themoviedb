@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 export const NotFound: FC = (): JSX.Element => (
   <div className='notfound__container'>
-    <h2 className='notfound__title'>Not Found</h2>
+    <h1>404</h1>
+    <h4>NOT FOUND</h4>
   </div>
 );

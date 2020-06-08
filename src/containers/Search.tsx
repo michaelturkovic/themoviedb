@@ -27,12 +27,18 @@ export const Search: FC = (): JSX.Element => {
     <div className='search__wrapper'>
       {!loading ? (
         <>
-          <h4 className='search__header'>SEARCH TERM: {movie}</h4>
-          <div className='search__container'>
-            {searchResults.map((movie, index) => (
-              <MovieItem key={index} movie={movie} />
-            ))}
-          </div>
+          {searchResults.length > 0 ? (
+            <>
+              <h4 className='search__header'>SEARCH TERM: {movie}</h4>
+              <div className='search__container'>
+                {searchResults.map((movie, index) => (
+                  <MovieItem key={index} movie={movie} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <h3 className='search__noresults'>No results</h3>
+          )}
         </>
       ) : (
         <Loading />

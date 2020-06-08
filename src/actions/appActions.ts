@@ -4,6 +4,10 @@ import { Dispatch } from 'react';
 import { AppActions, AppActionTypes } from './types';
 import { API_URL } from 'src/contstants';
 
+export const setAppErrorMessage = (message: string): AppActions => {
+  return { type: AppActionTypes.APP_ERROR, payload: message };
+};
+
 export const getSessionId = (): Action => async (
   dispatch: Dispatch<AppActions>
 ) => {
@@ -27,7 +31,7 @@ export const getSessionId = (): Action => async (
       localStorage.setItem('guestSession', JSON.stringify(sessionData));
     }
   } catch (error) {
-    console.log(error);
+    dispatch(setAppErrorMessage(error.message));
   }
 };
 

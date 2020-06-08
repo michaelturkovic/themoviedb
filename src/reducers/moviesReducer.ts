@@ -27,7 +27,7 @@ export const moviesReducer = (
         ...state,
         movies: [...state.movies, ...action.payload],
       };
-    case MoviesActionTypes.ERROR:
+    case MoviesActionTypes.MOVIES_ERROR:
       return {
         ...state,
         errorMessage: action.payload,

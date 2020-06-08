@@ -9,7 +9,7 @@ import {
   MovieRoulette,
 } from 'src/components';
 import { FloatButton } from 'src/components';
-import { getRandomMovie } from 'src/actions';
+import history from 'src/utils/history';
 
 type MovieRouteParams = {
   name: string;
@@ -26,13 +26,16 @@ export const Movies: FC = (): JSX.Element => {
     getMovies,
     clearMovies,
     getRatedMovies,
-    getRandomMovie
+    getRandomMovie,
   } = useMoviesStore();
-  const { guestSessionId } = useAppStore();
+  const { routes, guestSessionId } = useAppStore();
   const { name } = useParams<MovieRouteParams>();
   const query = name.replace('-', '_').toLocaleLowerCase();
 
   useEffect(() => {
+    const exists = routes.some((el) => el.path === name);
+    if (!exists) history.push('/notfound');
+
     clearMovies();
     setPage(1);
     getMovies(query, 1);

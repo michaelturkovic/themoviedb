@@ -1,5 +1,5 @@
 # MovieDB Library
-> MovieDB library using [The Movie Databse API](https://developers.themoviedb.org/3/getting-started/introduction)
+> MovieDB library using [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ![Screenshot](screenshot.png)
 
